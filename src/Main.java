@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.sql.Array;
+import java.util.*;
 
 public class Main {
     public static String riceChoose="";
@@ -55,6 +54,7 @@ public class Main {
        System.out.println("Hey! How man burritos do you want?");
        int num=key.nextInt();
        int i=0;
+
        while(num>0) {
            Cost=0;
            extraCost=0;
@@ -285,12 +285,72 @@ public class Main {
         TotalCost+=Cost;
         System.out.print("   " + Cost);
     }
-    public static void Summary(int num1,int num2,int num3,int num4,int num5,int num6,int num7,int num8,int num9,int num10,int num11,int num12,int num13,int num14,int num15,int num16,int num17,int num18,int num19,double num20){
-       System.out.println("This order has "+num1+" white rice,"+num2+ " brown rice,"+num3+ " chicken,"+num4+  " steak,"+num5+ " carnitas," +num6+" chorizo,"+num7+
+    public static void Summary(int num1,int num2,int num3,int num4,int num5,int num6,int num7,int num8,int num9,int num10,int num11,int num12,int num13,int num14,int num15,int num16,int num17,int num18,int num19,double num20) {
+        String str1 = Integer.toString(num1);
+        String str2 = Integer.toString(num2);
+        String str3 = Integer.toString(num3);
+        String str4 = Integer.toString(num4);
+        String str5 = Integer.toString(num5);
+        String str6 = Integer.toString(num6);
+        String str7 = Integer.toString(num7);
+        String str8 = Integer.toString(num8);
+        String str9 = Integer.toString(num9);
+        String str10 = Integer.toString(num10);
+        String str11 = Integer.toString(num11);
+        String str12 = Integer.toString(num12);
+        String str13 = Integer.toString(num13);
+        String str14 = Integer.toString(num14);
+        String str15 = Integer.toString(num15);
+        String str16 = Integer.toString(num16);
+        String str17 = Integer.toString(num17);
+        String str18 = Integer.toString(num18);
+        String str19 = Integer.toString(num19);
+        int value = (int) num20;
+        String str20 = Integer.toString(value);
 
-                " sofritas,"+num8+ " veggies(as meat option),"+num9+ " black beans,"+num10+ " pinto beans,"+num11+ " mild salsa," +num12+" med salsa,"+num13+ " hot salsa,"
+        String fin = "This order has " + str1 + " white rice," + str2 + " brown rice," + str3 + " chicken," + str4 + " steak," + str5 + " carnitas," + str6 + " chorizo," + str7 +
 
-               +num14+ " fajitas," +num15+ " lettuce,"+num16+ " cheese," +num17+" guac,"+num18+" queso," +num19+ " sour cream, and the sum is " +num20);
+                " sofritas," + str8 + " veggies(as meat option)," + str9 + " black beans," + str10 + " pinto beans," + str12 + " mild salsa," + str12 + " med salsa," + str13 + " hot salsa,"
+
+                + str14 + " fajitas," + str15 + " lettuce," + str16 + " cheese," + str17 + " guac," + str18 + " queso," + str19 + " sour cream, and the sum is " + str20 +".";
+
+        System.out.println(fin);
+
+        System.out.println();
+
+        final int lineLength = 50;
+        final int numLines = Math.round(fin.length() / lineLength);
+        String[] lines = new String[numLines+1];
+        int charend;
+        for (int i = 0, charini = 0; i < numLines+1; i++) {
+            charend = Math.min(charini + 50,fin.length());
+            lines[i] = fin.substring(charini, charend);
+
+            charini += lineLength;
+        }
+        for (int i = 0; i < lines.length; i++) {
+            System.out.println(lines[i]);
+        }
+
+        System.out.println();
+       addLinebreaks(fin,44);
+    }
+
+    public static void addLinebreaks(String input, int maxLineLength) {
+        StringTokenizer splited = new StringTokenizer(input, " ");
+        StringBuilder output = new StringBuilder(input.length());
+        int charint = 0;
+        while (splited.hasMoreTokens()) {
+            String word = splited.nextToken();
+
+            if (charint + word.length() > maxLineLength) {
+                output.append("\n");
+                charint= 0;
+            }
+            output.append(word).append(" ");
+            charint += word.length();
+        }
+        System.out.println(output);
     }
 
 }
