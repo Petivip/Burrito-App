@@ -333,7 +333,7 @@ public class Main {
         }
 
         System.out.println();
-       addLinebreaks(fin,44);
+       addLinebreaks(fin,50);
     }
 
     public static void addLinebreaks(String input, int maxLineLength) {
@@ -343,12 +343,12 @@ public class Main {
         while (splited.hasMoreTokens()) {
             String word = splited.nextToken();
 
-            if (charint + word.length() > maxLineLength) {
+            if (charint + 1 + word.length() > maxLineLength) {
                 output.append("\n");
                 charint= 0;
             }
             output.append(word).append(" ");
-            charint += word.length();
+            charint=charint + 1 + word.length();
         }
         System.out.println(output);
     }
